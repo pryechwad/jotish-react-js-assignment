@@ -12,8 +12,13 @@ export const AuthProvider = ({ children }) => {
     setEmployeeData([]);
   };
 
+  const setEmployeeDataWithLog = (data) => {
+    console.log('Setting employee data in context:', data);
+    setEmployeeData(data);
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, employeeData, setEmployeeData }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, employeeData, setEmployeeData: setEmployeeDataWithLog }}>
       {children}
     </AuthContext.Provider>
   );

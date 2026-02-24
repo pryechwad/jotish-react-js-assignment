@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import List from './pages/List';
 import Details from './pages/Details';
 import Camera from './pages/Camera';
@@ -15,6 +16,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/list"
             element={
