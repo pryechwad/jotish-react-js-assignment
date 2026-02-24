@@ -4,11 +4,7 @@ A fully responsive, modern ReactJS application for employee management with data
 
 ## Live Demo
 
-Live URL: https://jotish-react-js-assignment.vercel.app/
-
 Desktop View Demo: [Watch on Loom](https://www.loom.com/share/562d52ea5e2945e288245235c6ce4f6f)
-
-Mobile View Demo: [Watch on Google Drive](https://drive.google.com/file/d/1uAq_QcM-MPbqa56PjCKR3aY9idVRs9lt/view?usp=sharing)
 
 ## Features
 
@@ -444,18 +440,10 @@ This project is created for assignment purposes.
 
 Created as part of ReactJS Assignment - Jotish EMS
 
-## Acknowledgments
-
-- React team for the amazing framework
-- Tailwind CSS for the utility-first approach
-- Recharts for beautiful charts
-- Leaflet for interactive maps
-- All open-source contributors
-
 ---
 
 Note: This is a demonstration project showcasing modern React development practices and comprehensive employee management features.
 
-For any questions or issues, please contact support.
 
-© 2024 Jotish EMS. All rights reserved.
+
+
