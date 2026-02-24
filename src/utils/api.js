@@ -9,31 +9,31 @@ export const fetchEmployeeData = async () => {
       password: '123456'
     });
     
-    console.log('Full API Response:', response.data);
+    console.log('API Response:', response.data);
     
-    // Check if response has TABLE_DATA property
-    if (response.data && response.data.TABLE_DATA) {
-      const tableData = response.data.TABLE_DATA;
-      console.log('TABLE_DATA found:', tableData);
+    if (response.data?.TABLE_DATA?.data && Array.isArray(response.data.TABLE_DATA.data)) {
+      const rawData = response.data.TABLE_DATA.data;
       
-      // If TABLE_DATA is an object (not array), convert to array
-      if (typeof tableData === 'object' && !Array.isArray(tableData)) {
-        const employeesArray = Object.values(tableData);
-        console.log('Converted to array:', employeesArray.length, 'employees');
-        return employeesArray;
-      }
+      // Transform array of arrays to array of objects
+      const employees = rawData.map((row, index) => ({
+        id: index + 1,
+        name: row[0] || 'Unknown',
+        designation: row[1] || 'N/A',
+        city: row[2] || 'N/A',
+        empId: row[3] || '',
+        joinDate: row[4] || '',
+        salary: row[5] ? row[5].replace(/[$,]/g, '') : '0'
+      }));
       
-      // If already array
-      if (Array.isArray(tableData)) {
-        console.log('Already array:', tableData.length);
-        return tableData;
-      }
+      console.log('✅ Transformed', employees.length, 'employees');
+      console.log('Sample:', employees[0]);
+      return employees;
     }
     
-    console.warn('No TABLE_DATA found, returning empty array');
+    console.error('❌ Invalid data structure');
     return [];
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('❌ API Error:', error);
     throw error;
   }
 };

@@ -16,6 +16,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Animated Gradient Background */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
 /* Leaflet Map Styles */
 .leaflet-container {
   height: 100%;

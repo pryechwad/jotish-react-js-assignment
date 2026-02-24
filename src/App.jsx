@@ -5,10 +5,17 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import List from './pages/List';
 import Details from './pages/Details';
+import EditEmployee from './pages/EditEmployee';
+import SalarySlip from './pages/SalarySlip';
+import Attendance from './pages/Attendance';
+import Reports from './pages/Reports';
+import Settings from './pages/Settings';
 import Camera from './pages/Camera';
 import PhotoResult from './pages/PhotoResult';
 import Chart from './pages/Chart';
 import Map from './pages/Map';
+import Debug from './pages/Debug';
+import Payroll from './pages/Payroll';
 
 function App() {
   return (
@@ -41,6 +48,22 @@ function App() {
             }
           />
           <Route
+            path="/edit/:id"
+            element={
+              <ProtectedRoute>
+                <EditEmployee />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/salary-slip/:id"
+            element={
+              <ProtectedRoute>
+                <SalarySlip />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/camera"
             element={
               <ProtectedRoute>
@@ -69,6 +92,46 @@ function App() {
             element={
               <ProtectedRoute>
                 <Map />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/debug"
+            element={
+              <ProtectedRoute>
+                <Debug />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/attendance"
+            element={
+              <ProtectedRoute>
+                <Attendance />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/payroll"
+            element={
+              <ProtectedRoute>
+                <Payroll />
               </ProtectedRoute>
             }
           />

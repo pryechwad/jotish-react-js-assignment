@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import Sidebar from '../components/Sidebar';
 import { Toaster } from 'react-hot-toast';
+import { useMemo } from 'react';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -17,7 +18,13 @@ const Map = () => {
   const navigate = useNavigate();
   const { employeeData } = useAuth();
 
-  const employees = Array.isArray(employeeData) ? employeeData : [];
+  const employees = useMemo(() => {
+    if (!employeeData || !Array.isArray(employeeData)) return [];
+    if (employeeData.length > 0 && Array.isArray(employeeData[0])) {
+      return employeeData[0];
+    }
+    return employeeData;
+  }, [employeeData]);
 
   const cityCoordinates = {
     'New York': [40.7128, -74.0060],

@@ -3,12 +3,19 @@ import { useAuth } from '../context/AuthContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import Sidebar from '../components/Sidebar';
 import { Toaster } from 'react-hot-toast';
+import { useMemo } from 'react';
 
 const Chart = () => {
   const navigate = useNavigate();
   const { employeeData } = useAuth();
 
-  const employees = Array.isArray(employeeData) ? employeeData : [];
+  const employees = useMemo(() => {
+    if (!employeeData || !Array.isArray(employeeData)) return [];
+    if (employeeData.length > 0 && Array.isArray(employeeData[0])) {
+      return employeeData[0];
+    }
+    return employeeData;
+  }, [employeeData]);
 
   const topTenEmployees = employees.slice(0, 10).map(emp => ({
     name: emp.name?.split(' ')[0] || 'Unknown',
@@ -116,9 +123,9 @@ const Chart = () => {
 
 const StatCard = ({ title, value, color }) => {
   const colorClasses = {
-    blue: 'from-blue-500 to-blue-600',
-    green: 'from-green-500 to-green-600',
-    purple: 'from-purple-500 to-purple-600'
+    blue: 'from-cyan-500 to-blue-600',
+    green: 'from-emerald-500 to-teal-600',
+    purple: 'from-violet-500 to-purple-600'
   };
 
   return (
